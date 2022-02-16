@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crude Application</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href='/public/css/style.css'>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="container">
+                <div class="text-center">
+                    <a href='/' class="nav-brand text-dark">Employee Management System</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- /Header -->
+
+
+    <!-- Main Site -->
+        <main id="site-main">
+            <div class="container">
+                <div class="box-nav d-flex justify-between">
+                    <a href="/add-user" class="border-shadow">
+                        <span class="text-gradient">New User<i class="fa-solid fa-id-badge"></i></span>
+                    </a>
+                </div>
+
+                <!-- form handeling -->
+                <form action="/" method="POST">
+                    <table class="table">
+                        <thread class="tablehead-dark">
+                            <tr class="tablehead-dark">
+                                <th>ID No.</th>
+                                <th>Name</th>
+                                <th>@Email</th>
+                                <th>Gender</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thread>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Username</td>
+                                <td>example@gmail.com</td>
+                                <td>Male</td>
+                                <td>Active</td>
+                                <td>
+                                    <a href="/update-user" class="btn border-shadow update">
+                                        <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                    </a>
+                                    <a class="btn border-shadow delete">
+                                        <span class="text-gradient"><i class="fas fa-times"></i></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <!-- /form handeling -->
+            </div>
+        </main>
+    <!-- /Main Site -->
+</body>
+</html>
