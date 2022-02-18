@@ -8,6 +8,7 @@ const app = express ();
 const db = mongoose.connection;
 const bodyparser = require('body-parser');
 const path = require('path');
+const Employee = require('./server/model/employeeSchema');
 require('dotenv').config()
 //___________________
 //Port
@@ -62,17 +63,38 @@ app.use('/js', express.static(path.resolve(__dirname, "assets/js")))
 
 
 app.get('/',(req, res) => {
-  res.render('index');
+  Employee.find({}, (error, data) => {
+    res.render('index', {
+    employees: data
+    });
+  })
+
 });
 
-app.get('/add-user',(req, res) => {
-  res.render('add_user');
+app.get('/add_user',(req, res) => {
+  res.render('./add_user.ejs');
 });
 
-app.get('/update_user',(req, res) => {
-  res.render('update_user');
+app.get('/update_user/:id', (req, res) => {
+  Employee.findById(req.params.id, (error, employee) => {
+    res.render('update_user', {
+      employee: employee
+    });
+  })
+})
+
+app.post('/add_user', (req, res)=> {
+  Employee.create(req.body, (error, createdEmployee) => {
+    console.log(createdEmployee);
+    res.redirect('/')
+  })
 });
 
+app.delete('/delete/:id', (req, res)=> {
+  Employee.findByIdAndRemove(req.params.id, (error, employee) => {
+    res.send(employee)
+  });
+});
 //___________________
 //Listener
 //___________________

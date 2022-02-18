@@ -7,7 +7,7 @@
     <main id="site-main">
         <div class="container">
             <div class="box-nav d-flex justify-between">
-                <a href="/add-user" class="border-shadow">
+                <a href="/add_user" class="border-shadow">
                     <span class="text-gradient">New User<i class="fa-solid fa-id-badge"></i></span>
                 </a>
             </div>
@@ -27,21 +27,24 @@
                     </thread>
                     <tbody>
                         <%-include('include/_show')%>
-                        <tr>
-                            <td>1</td>
-                            <td>Username</td>
-                            <td>example@gmail.com</td>
-                            <td>Male</td>
-                            <td>Active</td>
-                            <td>
-                                <a href="#" class="btn border-shadow update">
-                                    <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
-                                </a>
-                                <a class="btn border-shadow delete">
-                                    <span class="text-gradient"><i class="fas fa-times"></i></span>
-                                </a>
-                            </td>
-                        </tr>
+                        <%for(let i = 0; i < employees.length; i++){%>
+                            <tr>
+                                <td><%=employees[i].id%></td>
+                                <td><%=employees[i].name%></td>
+                                <td><%=employees[i].email%></td>
+                                <td><%=employees[i].gender%></td>
+                                <td><%=employees[i].status%></td>
+                                <td>
+                                    <a href="/update_user/<%=employees[i].id%>" class="btn border-shadow update">
+                                        <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                    </a>
+                                    <form action="/delete/<%=employees[i].id%>?_method=DELETE" method="POST" class="btn border-shadow delete">
+                                        <button type="submit" class="text-gradient"><i class="fas fa-times"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <%}%>
+                        
                     </tbody>
                 </table>
             </form>
